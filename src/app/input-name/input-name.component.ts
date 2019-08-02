@@ -1,5 +1,8 @@
 import {
   Component,
+  Output,
+  Input,
+  EventEmitter,
   OnInit,
   DoCheck,
   OnChanges,
@@ -9,14 +12,15 @@ import {
   AfterViewInit,
   OnDestroy,
   SimpleChanges
-} from '@angular/core';
+ } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  selector: 'app-input-name',
+  templateUrl: './input-name.component.html',
+  styleUrls: ['./input-name.component.sass']
 })
-export class AppComponent implements
+
+export class InputNameComponent implements
 OnInit,
 DoCheck,
 OnChanges,
@@ -25,26 +29,18 @@ AfterContentChecked,
 AfterViewChecked,
 AfterViewInit,
 OnDestroy {
-  userName: string;
-  skills: string[] = ['Skill #1', 'Skill #2', 'Skill #3'];
-  skillsColors: string[] = ['blue', 'blueviolet', 'deepskyblue'];
-  clicks = [0, 0, 0];
-  result = 0;
-  private color: string = 'red';
+  @Output() nameChanged = new EventEmitter<string> ();
+  @Input() userName;
+  private color: string = 'green';
 
-  onNameChanged(value) {
-    this.userName = value;
-  }
-  onChanged(event, index) {
-    if (event) {
-      this.clicks[index]++;
-    } else {
-      this.clicks[index]--;
-    };
-    this.result = this.clicks[0] + this.clicks[1] + this.clicks[2];
+  constructor() {
   }
 
-  ngAfterContentChecked(): void {
+  onUserInput(event) {
+    this.nameChanged.emit(event.target.value);
+  }
+
+   ngAfterContentChecked(): void {
     console.log(`%cAfterContentChecked`, `color: ${this.color}`);
   }
 

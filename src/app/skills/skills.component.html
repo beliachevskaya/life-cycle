@@ -1,0 +1,12 @@
+<div class="container" [style.color]="skillColor">
+  <div class="container-elem">
+    <p>{{skillName}}'s {{skill}} value is {{count}}</p>
+  </div>
+  <div class="container-elem">
+    <button (click)="increase()" [style.background-color]="skillColor">+</button>
+  </div>
+  <div class="container-elem">
+    <button (click)="decrease()" [style.background-color]="skillColor">-</button>
+  </div>
+</div>
+
