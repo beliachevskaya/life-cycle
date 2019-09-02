@@ -30,14 +30,14 @@ AfterViewChecked,
 AfterViewInit,
 OnDestroy {
   @Output() nameChanged = new EventEmitter<string> ();
-  @Input() userName;
+  @Input() userName: string;
   private color: string = 'green';
 
   constructor() {
   }
 
-  onUserInput(event) {
-    this.nameChanged.emit(event.target.value);
+  onUserInput(value: string) {
+    this.nameChanged.emit(value);
   }
 
    ngAfterContentChecked(): void {

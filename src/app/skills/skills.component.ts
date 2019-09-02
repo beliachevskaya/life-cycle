@@ -28,10 +28,10 @@ AfterContentChecked,
 AfterViewChecked,
 AfterViewInit,
 OnDestroy {
-  @Input() count;
-  @Input() skill;
-  @Input() skillColor;
-  @Input() skillName;
+  @Input() count: number;
+  @Input() skill: number;
+  @Input() skillColor: string;
+  @Input() skillName: string;
   @Output() isClicked = new EventEmitter<boolean>();
   constructor() {}
 

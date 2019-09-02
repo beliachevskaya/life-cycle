@@ -28,8 +28,8 @@ OnDestroy {
   userName: string;
   skills: string[] = ['Skill #1', 'Skill #2', 'Skill #3'];
   skillsColors: string[] = ['blue', 'blueviolet', 'deepskyblue'];
-  clicks = [0, 0, 0];
-  result = 0;
+  clicks: number[] = [0, 0, 0];
+  result: number = 0;
   private color: string = 'red';
 
   onNameChanged(value) {
@@ -41,7 +41,7 @@ OnDestroy {
     } else {
       this.clicks[index]--;
     };
-    this.result = this.clicks[0] + this.clicks[1] + this.clicks[2];
+    this.result = this.clicks[0] + this.clicks[1] + this.clicks[2]; //это количество кликов на каждом поле skill
   }
 
   ngAfterContentChecked(): void {
